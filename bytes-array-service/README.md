@@ -36,7 +36,7 @@ public class HelloByteArrayService implements ByteArrayService {
 
 You must have both JDK 11+ and Maven to build and run this example.
 
-[Download RESTHeart v5](https://github.com/SoftInstigate/restheart/releases/tag/5.0.0-RC3) and uncompress it (`unzip restheart.zip` or `tar -xvf restheart.tar.gz`)
+Clone this repo, [Download RESTHeart v5](https://github.com/SoftInstigate/restheart/releases/tag/5.0.0-RC3) and uncompress it (`unzip restheart.zip` or `tar -xvf restheart.tar.gz`)
 
 ### With Docker 
 
