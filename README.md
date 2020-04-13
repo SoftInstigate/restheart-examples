@@ -1,6 +1,6 @@
 # RESTHeart v5 examples
 
-This repository provides examples on how to extend RESTHeart v5 with Java plugins.
+This repository provides examples on how to extend [RESTHeart v5](https://github.com/SoftInstigate/restheart) with Java plugins.
 
 It's a multi-module Maven project: the parent POM defines common properties while each module implements a single example.
 
