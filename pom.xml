@@ -1,27 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.restheart</groupId>
     <artifactId>restheart-examples</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <restheart.version>5.0.0-RC3-SNAPSHOT</restheart.version>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.restheart</groupId>
-            <artifactId>restheart-commons</artifactId>
-            <version>${restheart.version}</version>
-        </dependency>
-    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.restheart</groupId>
+                <artifactId>restheart-commons</artifactId>
+                <version>5.0.0-RC3-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <modules>
+        <module>bytes-array-service</module>
+    </modules>
 
     <build>
-        <finalName>hello</finalName>
+        <finalName>${artifactId}</finalName>
     </build>
 </project>

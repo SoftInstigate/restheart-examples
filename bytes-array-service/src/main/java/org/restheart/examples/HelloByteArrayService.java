@@ -19,12 +19,12 @@ import org.slf4j.LoggerFactory;
  */
 @RegisterPlugin(
         name = "hello",
-        description = "simple hello service",
+        description = "Basic ByteArrayService example",
         enabledByDefault = true,
         defaultURI = "/hello")
-public class HelloService implements ByteArrayService {
+public class HelloByteArrayService implements ByteArrayService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(HelloService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(HelloByteArrayService.class);
 
     @Override
     public void handle(ByteArrayRequest request, ByteArrayResponse response) throws Exception {
