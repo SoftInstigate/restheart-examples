@@ -14,7 +14,7 @@ public class HelloByteArrayService implements ByteArrayService {
     @Override
     public void handle(ByteArrayRequest request, ByteArrayResponse response) throws Exception {
         String message = "Hello " + request.getExchange().getQueryParameters().get("name").getFirst();
-        response.setStatusCode(HttpStatus.SC_OK);
+        response.setStatusCode(200);
         response.setContent(message.getBytes());
         response.setContentType("text/plain");
     }
