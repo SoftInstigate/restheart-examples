@@ -1,9 +1,5 @@
 # RESTHeart v5 examples
 
-## Summary
-
-[TOC]
-
 This repository provides examples on how to extend RESTHeart v5 with Java plugins.
 
 It's a multi-module Maven project: the parent POM defines common properties while each module implements a single example.

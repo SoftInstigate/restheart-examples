@@ -1,9 +1,5 @@
 # Hello World example
 
-[TOC]
-
-## Summary
-
 This is a basic Java REST Web service implemented with few lines of code.
 
 We are using [httpie](https://httpie.org) for testing API calls, but use whatever you like.
