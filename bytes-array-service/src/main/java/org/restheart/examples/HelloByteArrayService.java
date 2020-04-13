@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.restheart.examples;
 
 import org.restheart.handlers.exchange.ByteArrayRequest;
@@ -13,10 +8,6 @@ import org.restheart.utils.HttpStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- *
- * @author mturatti
- */
 @RegisterPlugin(
         name = "hello",
         description = "Basic ByteArrayService example",
