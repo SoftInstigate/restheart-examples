@@ -1,10 +1,8 @@
 # Hello World example
 
-This is a basic Java REST Web service implemented with few lines of code.
+A basic Java REST Web service implemented with few lines of code.
 
-We are using [httpie](https://httpie.org) for testing API calls, but use whatever you like.
-
-Very basic example for a GET request:
+GET request example:
 
 ```java
 @RegisterPlugin(
@@ -70,12 +68,11 @@ In both cases you should see the following logs:
  16:23:53.141 [main] INFO  org.restheart.Bootstrapper - RESTHeart started
 ```
 
-Call the Web service from another terminal or from a [browser](http://localhost:8080/hello?name=Mary).
+We suggest using [httpie](https://httpie.org) for calling API calls from command line, or just use your [browser](http://localhost:8080/hello?name=Mary).
 
 ## Test GET
 
 Pass the parameter `name` to get 'Hello "name"', for example
-
 
 ```
 $ http localhost:8080/hello?name=Mary
@@ -99,7 +96,6 @@ Hello Mary
 
 Same for POST or PUT
 
-
 ```
 $ printf 'Alice' | http POST localhost:8080/hello
 
@@ -118,4 +114,4 @@ Hello Alice
 
 ```
 
-Using any other HTTP verb will give you a HTTP 400 error.
+Using any other HTTP verb returns a HTTP 400 error.
