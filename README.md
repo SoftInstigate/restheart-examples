@@ -1,10 +1,12 @@
 # RESTHeart v5 examples
 
-This repository provides examples on how to extend [RESTHeart v5](https://github.com/SoftInstigate/restheart) - the REST API Microservice for __MongoDB__ - with Java plugins. 
+RESTHeart is the REST API for MongoDB. With RESTHeart you can easily access MongoDB via a REST API, but it's also possibile to create any kind of custom Web service. 
 
-This is a multi-module Maven project: the parent POM defines common properties while each module implements a single example.
+This repository provides examples on how to extend [RESTHeart v5](https://github.com/SoftInstigate/restheart) with Java plugins
 
-However, The only required Maven dependency for building RESTHeart Java plugins is `restheart-commons`:
+The parent POM defines common properties while each module implements a single example.
+
+The only required Maven dependency for building Java plugins is `restheart-commons`:
 
 ```xml
 <dependency>
@@ -13,6 +15,9 @@ However, The only required Maven dependency for building RESTHeart Java plugins 
     <version>Tag</version>
 </dependency>
 ```
+
+You can use this repository as a foundation for implementing your own plugins.
+
 
 ## Setup
 
