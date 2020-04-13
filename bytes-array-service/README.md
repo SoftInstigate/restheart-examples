@@ -4,7 +4,7 @@ This is a basic Java REST Web service implemented with few lines of code.
 
 We are using [httpie](https://httpie.org) for testing API calls, but use whatever you like.
 
-Very basic example for GET request:
+Very basic example for a GET request:
 
 ```java
 @RegisterPlugin(
