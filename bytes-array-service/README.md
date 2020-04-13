@@ -4,28 +4,17 @@ This is a basic Java REST Web service implemented with few lines of code.
 
 We are using [httpie](https://httpie.org) for testing API calls, but use whatever you like.
 
-Source code without log statements:
+Very basic example for GET request:
 
 ```java
 @RegisterPlugin(
         name = "hello",
-        description = "Basic ByteArrayService example",
-        enabledByDefault = true,
         defaultURI = "/hello")
 public class HelloByteArrayService implements ByteArrayService {
     @Override
     public void handle(ByteArrayRequest request, ByteArrayResponse response) throws Exception {
-        String message = "";
-        if (request.isGet()) {
-            message = "Hello " + request.getExchange().getQueryParameters().get("name").getFirst();
-            response.setStatusCode(HttpStatus.SC_OK);
-        } else if (request.isPost() || request.isPut()) {
-            String requestAsString = new String(request.getContent());
-            message = "Hello " + requestAsString;
-            response.setStatusCode(HttpStatus.SC_OK);
-        } else {
-            response.setStatusCode(HttpStatus.SC_BAD_REQUEST);
-        }
+        String message = "Hello " + request.getExchange().getQueryParameters().get("name").getFirst();
+        response.setStatusCode(HttpStatus.SC_OK);
         response.setContent(message.getBytes());
         response.setContentType("text/plain");
     }
