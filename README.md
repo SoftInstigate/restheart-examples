@@ -4,6 +4,16 @@ This repository provides examples on how to extend RESTHeart v5 with Java plugin
 
 It's a multi-module Maven project: the parent POM defines common properties while each module implements a single example.
 
+However, The only required Maven dependency for building RESTHeart Java plugins is `restheart-commons`:
+
+```xml
+<dependency>
+    <groupId>org.restheart</groupId>
+    <artifactId>restheart-commons</artifactId>
+    <version>Tag</version>
+</dependency>
+```
+
 ## Setup
 
 1) clone this repo and cd into it
