@@ -35,4 +35,4 @@ cd restheart-examples
 
 ## Modules
 
- - [bytes-array-service](bytes-array-service/README.md)
+ - [Hello world example](bytes-array-service/README.md)
