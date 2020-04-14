@@ -1,8 +1,8 @@
-# Hello World example
+# Hello world example
 
-A basic Java REST Web service implemented with few lines of code.
+A basic Java REST Web service implemented with few lines of code. It implements the `ByteArrayService` interface and returns `text/plain` content.
 
-GET request "hello world" example:
+GET request, streamlined version:
 
 ```java
 @RegisterPlugin(
@@ -19,11 +19,13 @@ public class HelloByteArrayService implements ByteArrayService {
 }
 ```
 
+See the [complete source code](src/main/java/org/restheart/examples/HelloByteArrayService.java)
+
 ## How to build and run
 
-You must have both JDK 11+ and Maven to build and run this example.
+You must have installed both JDK 11+ and Maven to build and run this example.
 
-Clone this repo, [Download RESTHeart v5](https://github.com/SoftInstigate/restheart/releases/tag/5.0.0-RC3) and uncompress it (`unzip restheart.zip` or `tar -xvf restheart.tar.gz`)
+Clone this repo, `cd` into it, [Download RESTHeart v5](https://github.com/SoftInstigate/restheart/releases/tag/5.0.0-RC3) and uncompress it (`unzip restheart.zip` or `tar -xvf restheart.tar.gz`).
 
 ### With Docker
 
@@ -34,12 +36,12 @@ If you have __docker__ running, then just executing the `run.sh` shell script wi
 1. Starts a volatile MongoDB docker container
 1. Starts RESTHeart Java process on port 8080
 
-> When finished testing, send a `CTRL-C` command to stop the script, kill RESTHeart and clean-up the MongoDB container.
+When finished testing, send a `CTRL-C` command to: stop the script, kill RESTHeart and clean-up the MongoDB container.
 
 ### Without Docker
 
 1. Build the plugin with `mvn package`.
-1. Copy the JAR into the plugins folder `cp target/bytes-array-service.jar ../restheart/plugins/`.
+1. Copy the built JAR into the plugins folder `cp target/bytes-array-service.jar ../restheart/plugins/`.
 1. Start MongoDB in your localhost.
 1. cd into the restheart distribution you have previously downloaded and uncompressed.
 1. Start the process: `java -jar restheart.jar etc/restheart.yml -e etc/default.properties`.
