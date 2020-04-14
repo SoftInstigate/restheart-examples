@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 @RegisterPlugin(
         name = "hello",
-        description = "Basic ByteArrayService example",
+        description = "Hello world example",
         enabledByDefault = true,
         defaultURI = "/hello")
 public class HelloByteArrayService implements ByteArrayService {
@@ -19,22 +19,30 @@ public class HelloByteArrayService implements ByteArrayService {
 
     @Override
     public void handle(ByteArrayRequest request, ByteArrayResponse response) throws Exception {
-        String message = "";
+        String responseMessage = "Hello, Anonymous";
+
         if (request.isGet()) {
-            LOGGER.info("query string: '{}'", request.getExchange().getQueryString());
-            message = "Hello " + request.getExchange().getQueryParameters().get("name").getFirst();
+            // If it's a GET look for a "name" query string parameter
+            LOGGER.debug("### QueryParameters: '{}'", request.getExchange().getQueryParameters());
+            if (request.getExchange().getQueryParameters().get("name") != null) {
+                responseMessage = "Hello, " + request.getExchange().getQueryParameters().get("name").getFirst();
+            }
             response.setStatusCode(HttpStatus.SC_OK);
-        } else if (request.isPost() || request.isPut()) {
-            String requestAsString = new String(request.getContent());
-            LOGGER.info("request: '{}'", requestAsString);
-            message = "Hello " + requestAsString;
+        } else if (request.isPost()) {
+            // If it's a POST look into the request body
+            String requestBody = new String(request.getContent());
+            LOGGER.debug("### requestBody: '{}'", requestBody);
+            if (!requestBody.isBlank()) {
+                responseMessage = "Hello, " + requestBody;
+            }
             response.setStatusCode(HttpStatus.SC_OK);
         } else {
+            // Any other HTTP verb is a bad request
             response.setStatusCode(HttpStatus.SC_BAD_REQUEST);
         }
-        response.setContent(message.getBytes());
+        LOGGER.debug("### responseMessage: '{}'", responseMessage);
         response.setContentType("text/plain");
-        LOGGER.info("response: '{}'", message);
+        response.setContent(responseMessage.getBytes());
     }
 
 }

@@ -25,7 +25,7 @@ You must have both JDK 11+ and Maven to build and run this example.
 
 Clone this repo, [Download RESTHeart v5](https://github.com/SoftInstigate/restheart/releases/tag/5.0.0-RC3) and uncompress it (`unzip restheart.zip` or `tar -xvf restheart.tar.gz`)
 
-### With Docker 
+### With Docker
 
 If you have __docker__ running, then just executing the `run.sh` shell script will:
 
@@ -68,7 +68,7 @@ In both cases you should see the following logs:
  16:23:53.141 [main] INFO  org.restheart.Bootstrapper - RESTHeart started
 ```
 
-We suggest using [httpie](https://httpie.org) for calling API calls from command line, or just use your [browser](http://localhost:8080/hello?name=Mary).
+We suggest using [httpie](https://httpie.org) for calling the API from command line, or just use your [browser](http://localhost:8080/hello?name=Mary).
 
 ## Test GET
 
@@ -92,9 +92,9 @@ Hello Mary
 
 ```
 
-## Test POST or PUT
+## Test POST
 
-Same for POST or PUT
+Same for a POST request
 
 ```
 $ printf 'Alice' | http POST localhost:8080/hello
@@ -114,4 +114,4 @@ Hello Alice
 
 ```
 
-Using any other HTTP verb returns a HTTP 400 error.
+Using any other HTTP verb returns a "HTTP 400 - Bad request"  error.
