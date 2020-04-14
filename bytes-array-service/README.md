@@ -2,7 +2,7 @@
 
 A basic Java REST Web service implemented with few lines of code.
 
-GET request example:
+GET request "hello world" example:
 
 ```java
 @RegisterPlugin(
