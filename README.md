@@ -1,6 +1,6 @@
 # RESTHeart v5 examples
 
-RESTHeart is the REST API for MongoDB. With RESTHeart you can easily access MongoDB via a REST API, but it's also possibile to create any kind of custom Web service. 
+RESTHeart is the REST API for MongoDB. With RESTHeart you can easily access MongoDB via a REST API, but it's also possibile to create any kind of custom Web service.
 
 This repository provides examples on how to extend [RESTHeart v5](https://github.com/SoftInstigate/restheart) with Java plugins
 
@@ -36,3 +36,4 @@ cd restheart-examples
 ## Modules
 
  - [Hello world example](bytes-array-service/README.md)
+ - [MongoDB serverStatus service](mongo-status-service/README.md)

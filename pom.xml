@@ -24,6 +24,7 @@
 
     <modules>
         <module>bytes-array-service</module>
+        <module>mongo-status-service</module>
     </modules>
 
     <build>
