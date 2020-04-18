@@ -1,6 +1,21 @@
 # MongoDB serverStatus service
 
-This example service implements the `db.runCommand( { serverStatus: 1 } )` MongoDB call. It returns a JSON document.
+This example service implements the `serverStatus` MongoDB system call.
+
+By default, it runs `db.runCommand( { serverStatus: 1 } )`
+
+```http
+GET /status HTTP/1.1
+```
+
+Use the optional `command` query parameter to specify additional conditions. For example, the following operation suppresses the repl, metrics and locks information in the output.
+
+```http
+GET /status?command='{ serverStatus: 1, repl: 0, metrics: 0, locks: 0 }' HTTP/1.1
+
+```
+
+It returns the `serverStatus` JSON document.
 
 See https://docs.mongodb.com/manual/reference/command/serverStatus/
 
