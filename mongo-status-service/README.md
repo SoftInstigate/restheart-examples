@@ -11,7 +11,7 @@ GET /status HTTP/1.1
 Use the optional `command` query parameter to specify additional conditions. For example, the following operation suppresses the repl, metrics and locks information in the output.
 
 ```http
-GET /status?command='{ serverStatus: 1, repl: 0, metrics: 0, locks: 0 }' HTTP/1.1
+GET /status?command='{serverStatus: 1, repl: 0, metrics: 0, locks: 0}' HTTP/1.1
 
 ```
 
