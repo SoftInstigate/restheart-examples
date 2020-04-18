@@ -48,7 +48,7 @@ When finished testing, send a `CTRL-C` command to: stop the script, kill RESTHea
 
 We suggest using [httpie](https://httpie.org) for calling the API from command line, or just use your [browser](http://localhost:8080/status).
 
-```json
+```http
 $ http localhost:8080/status
 
 HTTP/1.1 200 OK
