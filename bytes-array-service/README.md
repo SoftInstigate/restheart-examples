@@ -99,7 +99,7 @@ We suggest using [httpie](https://httpie.org) for calling the API from command l
 
 Pass the parameter `name` to get 'Hello "name"', for example
 
-```
+```http
 $ http localhost:8080/hello?name=Mary
 
 HTTP/1.1 200 OK
@@ -121,7 +121,7 @@ Hello, Mary
 
 Same for a POST request
 
-```
+```http
 $ printf 'Alice' | http POST localhost:8080/hello
 
 HTTP/1.1 200 OK
