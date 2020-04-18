@@ -19,7 +19,30 @@ public class HelloByteArrayService implements ByteArrayService {
 }
 ```
 
-See the [complete source code](src/main/java/org/restheart/examples/HelloByteArrayService.java)
+See the [complete source code](src/main/java/org/restheart/examples/HelloByteArrayService.java).
+
+For example:
+
+```http
+GET /hello HTTP/1.1
+```
+
+Returns `Hello, Anonymous`.
+
+```http
+GET /hello?name=Andrea HTTP/1.1
+```
+
+Or
+
+```http
+POST /hello HTTP/1.1
+
+Andrea
+```
+
+Both returns `Hello, Andrea`.
+
 
 ## How to build and run
 
@@ -90,7 +113,7 @@ Content-Type: text/plain
 Date: Mon, 13 Apr 2020 13:32:52 GMT
 X-Powered-By: restheart.org
 
-Hello Mary
+Hello, Mary
 
 ```
 
@@ -112,7 +135,7 @@ Content-Type: text/plain
 Date: Mon, 13 Apr 2020 14:28:18 GMT
 X-Powered-By: restheart.org
 
-Hello Alice
+Hello, Alice
 
 ```
 
