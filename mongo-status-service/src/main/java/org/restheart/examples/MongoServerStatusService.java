@@ -2,8 +2,8 @@ package org.restheart.examples;
 
 import com.mongodb.MongoClient;
 import org.bson.Document;
-import org.restheart.handlers.exchange.ByteArrayRequest;
-import org.restheart.handlers.exchange.ByteArrayResponse;
+import org.restheart.exchange.ByteArrayRequest;
+import org.restheart.exchange.ByteArrayResponse;
 import org.restheart.plugins.ByteArrayService;
 import org.restheart.plugins.InjectMongoClient;
 import org.restheart.plugins.RegisterPlugin;

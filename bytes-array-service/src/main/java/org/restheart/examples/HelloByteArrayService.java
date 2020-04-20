@@ -1,7 +1,7 @@
 package org.restheart.examples;
 
-import org.restheart.handlers.exchange.ByteArrayRequest;
-import org.restheart.handlers.exchange.ByteArrayResponse;
+import org.restheart.exchange.ByteArrayRequest;
+import org.restheart.exchange.ByteArrayResponse;
 import org.restheart.plugins.ByteArrayService;
 import org.restheart.plugins.RegisterPlugin;
 import org.restheart.utils.HttpStatus;

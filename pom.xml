@@ -17,7 +17,7 @@
             <dependency>
                 <groupId>org.restheart</groupId>
                 <artifactId>restheart-commons</artifactId>
-                <version>5.0.0-RC3</version>
+                <version>5.0.0-RC4</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -28,6 +28,6 @@
     </modules>
 
     <build>
-        <finalName>${artifactId}</finalName>
+        <finalName>${project.artifactId}</finalName>
     </build>
 </project>

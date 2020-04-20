@@ -23,7 +23,7 @@ See https://docs.mongodb.com/manual/reference/command/serverStatus/
 
 You must have installed both JDK 11+ and Maven to build and run this example.
 
-Clone this repo, `cd` into it, [Download RESTHeart v5](https://github.com/SoftInstigate/restheart/releases/tag/5.0.0-RC3) and uncompress it (`unzip restheart.zip` or `tar -xvf restheart.tar.gz`).
+Clone this repo, `cd` into it, [Download RESTHeart v5](https://github.com/SoftInstigate/restheart/releases/tag/5.0.0-RC4) and uncompress it (`unzip restheart.zip` or `tar -xvf restheart.tar.gz`).
 
 ### With Docker
 
