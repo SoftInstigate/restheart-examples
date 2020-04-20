@@ -41,7 +41,7 @@ public class HelloByteArrayService implements ByteArrayService {
             response.setStatusCode(HttpStatus.SC_BAD_REQUEST);
         }
         LOGGER.debug("### responseMessage: '{}'", responseMessage);
-        response.setContentType("text/plain");
+        response.setContentType("text/plain; charset=utf-8");
         response.setContent(responseMessage.getBytes());
     }
 
