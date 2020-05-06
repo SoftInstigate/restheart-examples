@@ -21,13 +21,16 @@ See https://docs.mongodb.com/manual/reference/command/serverStatus/
 
 ## How to build and run
 
-You must have installed both JDK 11+ and Maven to build and run this example.
+You need both **JDK 11+** and **Maven** to build and run this example.
 
-Clone this repo, `cd` into it, [Download RESTHeart v5](https://github.com/SoftInstigate/restheart/releases/tag/5.0.0) and uncompress it (`unzip restheart.zip` or `tar -xvf restheart.tar.gz`).
+-   Clone this repo `git clone git@github.com:SoftInstigate/restheart-examples.git`
+-   `cd` into the `restheart-examples` folder
+-   Download RESTHeart, either the [ZIP](https://github.com/SoftInstigate/restheart/releases/download/5.0.0/restheart.zip) or [TAR.GZ](https://github.com/SoftInstigate/restheart/releases/download/5.0.0/restheart.tar.gz) archive.
+-   uncompress it: `unzip restheart.zip` or `tar -xvf restheart.tar.gz`.
 
 ### With Docker
 
-If you have __docker__ running, then just executing the `run.sh` shell script will:
+If you have **docker** running, then just executing the `run.sh` shell script will:
 
 1. Build the JAR with Maven
 1. Copy the JAR file into `../restheart/plugins/` folder
