@@ -36,7 +36,7 @@ You need both **JDK 11+** and **Maven** to build and run this example.
 We suggest using [httpie](https://httpie.org) for calling the API from command line, or just use your [browser](http://localhost:8080/status).
 
 ```http
-$ http localhost:8080/rndSrv
+$ http localhost:8080/rndStr
 
 HTTP/1.1 200 OK
 Access-Control-Allow-Credentials: true
