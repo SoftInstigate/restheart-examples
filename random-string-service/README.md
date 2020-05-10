@@ -2,9 +2,16 @@
 
 This example shows how to add an external dependency to the classpath so that a plugin can use it.
 
-> By external dependency we mean a dependency that is not included in restheart.jar, thus it must be added to the classpath for the service to work.
+> By *external dependency* we mean a dependency that is not included in restheart.jar, thus it must be added to the classpath for the service to work.
+
+**To add an external dependency to the classpath just copy it into the directory `plugins`.**
 
 This service just returns a random string on GET requests and uses an external dependency, Apache Commons Lang.
+
+Make sure not to copy jars to the directory plugins that are already included in restheart.jar. To list of all dependencies included in restheart.jar, you can use Maven: 
+- clone restheart
+- `cd restheart/core` 
+- `mvn dependency:tree`
 
 ## How to build and run
 
