@@ -33,3 +33,4 @@ You need both **JDK 11+** and **Maven** to build and run this example.
 
  - [Hello world example](bytes-array-service/README.md)
  - [MongoDB serverStatus service](mongo-status-service/README.md)
+ - [Random String service](random-string-service/README.md) - shows how to deploy a service that uses external dependencies
