@@ -26,6 +26,7 @@
         <module>bytes-array-service</module>
         <module>mongo-status-service</module>
         <module>javascript-service</module>
+        <module>random-string-service</module>
     </modules>
 
     <build>
