@@ -1,10 +1,11 @@
 package org.restheart.examples;
 
 import com.mongodb.MongoClient;
-import org.bson.Document;
-import org.restheart.exchange.ByteArrayRequest;
-import org.restheart.exchange.ByteArrayResponse;
-import org.restheart.plugins.ByteArrayService;
+import org.bson.BsonDocument;
+import org.bson.BsonInt32;
+import org.restheart.exchange.BsonRequest;
+import org.restheart.exchange.BsonResponse;
+import org.restheart.plugins.BsonService;
 import org.restheart.plugins.InjectMongoClient;
 import org.restheart.plugins.RegisterPlugin;
 import org.restheart.utils.HttpStatus;
@@ -16,11 +17,14 @@ import org.slf4j.LoggerFactory;
         description = "returns MongoDB serverStatus",
         enabledByDefault = true,
         defaultURI = "/status")
-public class MongoServerStatusService implements ByteArrayService {
+public class MongoServerStatusService implements BsonService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MongoServerStatusService.class);
 
     private MongoClient mongoClient;
+
+    private static final BsonDocument DEFAULT_COMMAND
+            = new BsonDocument("serverStatus", new BsonInt32(1));
 
     @InjectMongoClient
     public void init(MongoClient mongoClient) {
@@ -28,21 +32,25 @@ public class MongoServerStatusService implements ByteArrayService {
     }
 
     @Override
-    public void handle(ByteArrayRequest request, ByteArrayResponse response) throws Exception {
+    public void handle(BsonRequest request, BsonResponse response) throws Exception {
         if (request.isGet()) {
-            LOGGER.debug("### QueryParameters: '{}'", request.getExchange().getQueryParameters());
-            final Document command = (request.getExchange().getQueryParameters().get("command") != null)
-                    ? Document.parse(request.getExchange().getQueryParameters().get("command").getFirst())
-                    : new Document("serverStatus", 1);
-            LOGGER.debug("### command=" + command.toJson());
-            Document serverStatus = mongoClient.getDatabase("admin").runCommand(command);
-            response.setContent(serverStatus.toJson().getBytes());
+            var commandQP = request.getExchange().getQueryParameters().get("command");
+
+            final var command = commandQP != null
+                    ? BsonDocument.parse(commandQP.getFirst())
+                    : DEFAULT_COMMAND;
+            
+            LOGGER.debug("### command=" + command);
+            
+            var serverStatus = mongoClient.getDatabase("admin")
+                    .runCommand(command, BsonDocument.class);
+            
+            response.setContent(serverStatus);
             response.setStatusCode(HttpStatus.SC_OK);
-            response.setContentType("application/json");
+            response.setContentTypeAsJson();
         } else {
             // Any other HTTP verb is a bad request
             response.setStatusCode(HttpStatus.SC_BAD_REQUEST);
         }
     }
-
 }

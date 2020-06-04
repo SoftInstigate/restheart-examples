@@ -17,7 +17,7 @@
             <dependency>
                 <groupId>org.restheart</groupId>
                 <artifactId>restheart-commons</artifactId>
-                <version>5.0.0</version>
+                <version>5.1.1-SNAPSHOT</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -27,6 +27,7 @@
         <module>mongo-status-service</module>
         <module>javascript-service</module>
         <module>random-string-service</module>
+        <module>csv-interceptor</module>
     </modules>
 
     <build>
