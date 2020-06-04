@@ -25,6 +25,7 @@ public class CoordsToGeoJson implements Interceptor<BsonFromCsvRequest, BsonResp
 
         docs.stream()
                 .map(doc -> doc.asDocument())
+                .filter(doc -> doc.containsKey("lon") && doc.containsKey("lat"))
                 .forEachOrdered(doc -> {
                     // get Coordinates
                     var coordinates = new BsonArray();
@@ -45,7 +46,6 @@ public class CoordsToGeoJson implements Interceptor<BsonFromCsvRequest, BsonResp
     public boolean resolve(BsonFromCsvRequest request, BsonResponse response) {
         return request.isHandledBy("csvLoader")
                 && request.isPost()
-                && "/poi".equals(request.getPath());
+                && "/csv".equals(request.getPath());
     }
-
 }
