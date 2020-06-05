@@ -1,7 +1,7 @@
 # RESTHeart v5 examples
 
 [![GitHub last commit](https://img.shields.io/github/last-commit/softinstigate/restheart-examples)](https://github.com/SoftInstigate/restheart-examples/commits/master)
-![Build](https://github.com/SoftInstigate/restheart-examples/workflows/Build/badge.svg?branch=master)
+[![Build](https://github.com/SoftInstigate/restheart-examples/workflows/Build/badge.svg)](https://github.com/SoftInstigate/restheart-examples/actions?query=workflow%3A%22Build%22)
 
 RESTHeart is the REST API for MongoDB. With RESTHeart you can easily access MongoDB via a REST API, but it's also possible to create any kind of custom Web service.
 
