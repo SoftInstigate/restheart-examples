@@ -31,6 +31,7 @@ You need both **JDK 11+** and **Maven** to build and run this example.
 
 ## Modules
 
- - [Hello world example](bytes-array-service/README.md)
- - [MongoDB serverStatus service](mongo-status-service/README.md)
+ - [Hello world example](bytes-array-service/README.md) - A basic Java REST Web service.
+ - [MongoDB serverStatus service](mongo-status-service/README.md) - implements the serverStatus MongoDB system call.
  - [Random String service](random-string-service/README.md) - shows how to deploy a service that uses external dependencies
+ - [CSV Interceptor](csv-interceptor/README.md) - converts coordinates from [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) to a [GeoJSON](https://geojson.org) object.
