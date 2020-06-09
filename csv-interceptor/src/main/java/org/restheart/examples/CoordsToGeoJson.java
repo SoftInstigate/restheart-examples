@@ -44,8 +44,6 @@ public class CoordsToGeoJson implements Interceptor<BsonFromCsvRequest, BsonResp
 
     @Override
     public boolean resolve(BsonFromCsvRequest request, BsonResponse response) {
-        return request.isHandledBy("csvLoader")
-                && request.isPost()
-                && "/csv".equals(request.getPath());
+        return request.isHandledBy("csvLoader") && request.isPost();
     }
 }
