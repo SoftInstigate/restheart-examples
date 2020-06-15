@@ -25,7 +25,7 @@ You need both **JDK 11+** and **Maven** to build and run this example.
 ### Run
 
 1. `cd random-string-service`
-1. Build the plugin with `mvn package -Pdeps` (the profile deps uses the maven-dependency-pluging to copy the jar of the external dependency to /target/lib)
+1. Build the plugin with `mvn package` (uses the maven-dependency-pluging to copy the jar of the external dependency to /target/lib)
 1. Copy both the service JAR `target/random-string-service.jar `and `target/lib/commons-lang3-3.10.jar` into `../restheart/plugins/` folder
 1. Start MongoDB in your localhost.
 1. cd into the restheart distribution you have previously downloaded and uncompressed.
