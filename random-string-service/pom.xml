@@ -16,8 +16,6 @@
       <scope>provided</scope>
     </dependency>
         
-    <!-- This is an external dependency, i.e. not included in restheart.jar.
-    It must be copied to plugins directory for the service to use it -->
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
@@ -28,6 +26,9 @@
   <build>
     <plugins>
       <plugin>
+        <!-- maven-dependency-plugin is used to copy the external dependencies
+        (i.e. that are not provided by restheart.jar) to target/lib 
+        see https://restheart.org/docs/plugins/deploy/ -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
         <version>3.1.2</version>
@@ -40,8 +41,7 @@
             <configuration>
               <outputDirectory>${project.build.directory}/lib</outputDirectory>
               <!-- the following settings just include dependencies
-                   of runtime and compile scopes
-              -->
+              of runtime and compile scopes -->
               <excludeTransitive>true</excludeTransitive>
               <includeScope>runtime</includeScope>
             </configuration>
