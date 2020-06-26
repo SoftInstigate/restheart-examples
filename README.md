@@ -28,7 +28,7 @@ You need both **JDK 11+** and **Maven** to build and run this example.
 
 -   Clone this repo `git clone git@github.com:SoftInstigate/restheart-examples.git`
 -   `cd` into the `restheart-examples` folder
--   Download RESTHeart, either the [ZIP](https://github.com/SoftInstigate/restheart/releases/download/5.0.0/restheart.zip) or [TAR.GZ](https://github.com/SoftInstigate/restheart/releases/download/5.0.0/restheart.tar.gz) archive.
+-   [Download RESTHeart](https://github.com/SoftInstigate/restheart/releases/)
 -   uncompress it: `unzip restheart.zip` or `tar -xvf restheart.tar.gz`.
 -   cd into each module for specific instructions.
 
