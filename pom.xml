@@ -52,6 +52,7 @@
         <module>mongo-status-service</module>
         <module>random-string-service</module>
         <module>csv-interceptor</module>
+        <module>user-signup</module>
     </modules>
 
     <build>
