@@ -1,13 +1,107 @@
 # User Signup
 
-This example implements a user signup process:
+> **WORK IN PROGRESS!** This example is not complete. This document only describes how it will work when fully implemented. Feedbacks and suggestions are welcome!
 
-unauthenticated clients can POST to /users to create new users. 
+This example implements a user signup process.
 
-whan a new user document is created:
-- the request interceptor verificationCodeGenerator adds the verification code to the user document and sets the roles=["UNVERIFIED"]
-- the async response interceptor emailVerificationSender sends the verification email to the user with the verification code
-- the service userVerifier allows to unlock (ie. set the roles=["USER"]) the user checking the verification code
+To create an user, an unauthenticated client executes a POST request to `/users`; this  creates a new user document.
+
+When the new document gets created:
+
+- the request interceptor `verificationCodeGenerator` adds the verification code to the user document and sets `roles: ["UNVERIFIED"]` (the ACL defines no permissions for the role `UNVERIFIED`)
+- the async response interceptor `emailVerificationSender` sends the verification email to the user with the verification code
+- the service `userVerifier` allows to unlock (ie. set the roles=["USER"]) the user checking the verification code
+- the response interceptor `verificationCodeHider` removes the verification code from the response of `GET /users` so that the only way to know the verification code is from the verification email.
+
+## Validation
+
+[JSON Schema Validation](https://restheart.org/docs/json-schema-validation/) is used to enforce the schema to the user document.
+
+The following request updates the metadata
+
+```
+# create the schema store
+PUT /_schemas
+
+# create the JSON Schema for user
+
+POST /_schemas
+
+{
+    "_id": "user",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "_id": {
+            "type": "email"
+        },
+        "password": {
+            "type": "string"
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+    }
+}
+
+# updates the metadata of collectiobn /users to apply the schema validation
+
+PUT /users
+
+{
+    "jsonSchema": {
+        "schemaId": "user"
+    }
+}
+```
+
+## Check user credentials
+
+For a complete guide read [Suggested way to check credentials](https://restheart.org/docs/security/how-clients-authenticate/#suggested-way-to-check-credentials)
+
+The following request creates the user `user@domain.io`
+
+```
+POST /users
+
+{
+    "_id": "user@domain.io"
+    "password": "secret"
+}
+```
+
+It will automatically get the role `UNVERIFIED` and the verification email will be sent.
+
+The `roles` service is used to check the user credentials and returns the user roles. If the user has not verified the email, calling the roles service with the correct credentials returns the role `UNVERIFIED` and the UX should display an error message saying that the email address has not been verified.
+
+```
+GET /roles/<userid>
+Authorization: <basic authentication credentials>
+
+{
+    "authenticated": true, 
+    "roles": [
+        "UNVERIFIED"
+    ]
+}
+```
+
+If the email has been verified, the roles service will return the role `USER`. In this case the sign in 
+
+```
+GET /roles/<userid>
+Authorization: <basic authentication credentials>
+
+{
+    "authenticated": true, 
+    "roles": [
+        "USER"
+    ]
+}
+```
 
 ## How to build and run
 
