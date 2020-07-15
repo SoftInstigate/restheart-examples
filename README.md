@@ -38,3 +38,4 @@ You need both **JDK 11+** and **Maven** to build and run this example.
  - [MongoDB serverStatus service](mongo-status-service/README.md) - implements the serverStatus MongoDB system call.
  - [Random String service](random-string-service/README.md) - shows how to deploy a service that uses external dependencies
  - [CSV Interceptor](csv-interceptor/README.md) - converts coordinates from [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) to a [GeoJSON](https://geojson.org) object.
+ - [User Singup](user-signup/README.md) -  implements a user signup process. This is an example of a complex process implemented with few interceptors, a service and uses json schema validation and security permissions.
