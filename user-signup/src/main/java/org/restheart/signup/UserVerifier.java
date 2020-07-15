@@ -19,6 +19,7 @@ package org.restheart.signup;
  *
  * @author Andrea Di Cesare <andrea@softinstigate.com>
  */
+import com.google.gson.JsonObject;
 import com.mongodb.MongoClient;
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
@@ -66,17 +67,33 @@ public class UserVerifier implements JsonService {
             throws Exception {
         if (request.isOptions()) {
             handleOptions(request);
-        } else if (request.isPost() && checkRequest(request)) {
-            var username = request.getContent().getAsJsonObject()
-                    .get("username").getAsJsonPrimitive().getAsString();
-            var code = request.getContent().getAsJsonObject()
-                    .get("username").getAsJsonPrimitive().getAsString();
+        } else if (request.isGet() && checkRequest(request)) {
+            var qparams = request.getExchange().getQueryParameters();
 
-            if (verify(username, code)) {
-                unlock(username);
-                response.setStatusCode(HttpStatus.SC_OK);
+            if (!qparams.containsKey("username")
+                    || qparams.get("username").isEmpty()
+                    || !qparams.containsKey("code")
+                    || qparams.get("code").isEmpty()) {
+                var resp = new JsonObject();
+                resp.addProperty("status", "error, missing verification code");
+                response.setContent(resp);
+                response.setStatusCode(HttpStatus.SC_BAD_REQUEST);
             } else {
-                response.setStatusCode(HttpStatus.SC_FORBIDDEN);
+                var username = qparams.get("username").getFirst();
+                var code = qparams.get("code").getFirst();
+
+                if (verify(username, code)) {
+                    unlock(username);
+                    var resp = new JsonObject();
+                    resp.addProperty("status", "verified");
+                    response.setContent(resp);
+                    response.setStatusCode(HttpStatus.SC_OK);
+                } else {
+                    var resp = new JsonObject();
+                    resp.addProperty("status", "error, wrong verification code");
+                    response.setContent(resp);
+                    response.setStatusCode(HttpStatus.SC_FORBIDDEN);
+                }
             }
         } else {
             response.setStatusCode(HttpStatus.SC_NOT_IMPLEMENTED);
@@ -84,14 +101,12 @@ public class UserVerifier implements JsonService {
     }
 
     private boolean checkRequest(JsonRequest request) {
-        return request.getContent() != null
-                && request.getContent().isJsonObject()
-                && request.getContent().getAsJsonObject().has("username")
-                && request.getContent().getAsJsonObject().get("username").isJsonPrimitive()
-                && request.getContent().getAsJsonObject().get("username").getAsJsonPrimitive().isString()
-                && request.getContent().getAsJsonObject().has("code")
-                && request.getContent().getAsJsonObject().get("code").isJsonPrimitive()
-                && request.getContent().getAsJsonObject().get("code").getAsJsonPrimitive().isString();
+        var qparams = request.getExchange().getQueryParameters();
+
+        return qparams.containsKey("username")
+                && !qparams.get("username").isEmpty()
+                && qparams.containsKey("code")
+                && !qparams.get("code").isEmpty();
     }
 
     /**
