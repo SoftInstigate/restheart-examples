@@ -9,7 +9,6 @@ When the new document gets created:
 - the request interceptor `verificationCodeGenerator` adds the verification code to the user document and sets `roles: ["UNVERIFIED"]` (the ACL defines no permissions for the role `UNVERIFIED`)
 - the async response interceptor `emailVerificationSender` sends the verification email to the user with the verification code
 - the service `userVerifier` allows to unlock (ie. set the roles=["USER"]) the user checking the verification code
-- the response interceptor `verificationCodeHider` removes the verification code from the response of `GET /users` so that the only way to know the verification code is from the verification email.
 
 ## How to build and run
 
