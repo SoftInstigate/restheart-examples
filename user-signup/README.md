@@ -2,13 +2,13 @@
 
 This example implements a user signup process.
 
-To create an user, an unauthenticated client executes a POST request to `/users`; this  creates a new user document.
+To create an user, an unauthenticated client executes a POST request to `/users`; this creates a new user document.
 
 When the new document gets created:
 
-- the request interceptor `verificationCodeGenerator` adds the verification code to the user document and sets `roles: ["UNVERIFIED"]` (the ACL defines no permissions for the role `UNVERIFIED`)
-- the async response interceptor `emailVerificationSender` sends the verification email to the user with the verification code
-- the service `userVerifier` allows to unlock (ie. set the roles=["USER"]) the user checking the verification code
+- the request interceptor `verificationCodeGenerator` adds the verification code to the user document and sets `roles: ["UNVERIFIED"]` (the ACL defines no permissions for this role)
+- the async response interceptor `emailVerificationSender` sends the verification email with the link to the `userVerifier` service with the verification code passed via a query parameter
+- the service `userVerifier` checks the verification code and unlocks (ie. set the roles=["USER"]) the user
 
 ## How to build and run
 
@@ -25,15 +25,15 @@ You need both **JDK 11+** and **Maven** to build and run this example.
 
 1. `cd user-signup`
 1. Build the plugin with `mvn package` (uses the maven-dependency-plugin to copy the jar of the external dependency to /target/lib)
-1. Copy both the service JAR `target/user-signup.jar `and `target/lib/*` into `../../restheart/plugins/` folder
-1. Start MongoDB in your localhost.
-1. cd into the restheart distribution you have previously downloaded and uncompressed.
-1. Edit the `etc/restheart.yml` as update the configuration as described in the following section **Configuration**
+1. Copy both the plugins JAR `target/user-signup.jar` and `target/lib/*` into the directory `../../restheart/plugins/`
+1. Start MongoDB on your localhost.
+1. cd into the restheart directory
+1. Edit the `etc/restheart.yml`as described in the following section **Configuration**
 1. Start the process: `java -jar restheart.jar etc/restheart.yml -e etc/default.properties`.
 
 ### Configuration
 
-You need to configure the `emailVerificationSender` interceptor with the connection parameters of an SMTP server (needed to send the verification emails). Add the following snippet to the `plugins-args` section of `etc/restheart.yml` (work with gmail but any SMTP server with SSL support should work):
+You need to configure the `emailVerificationSender` interceptor with the connection parameters of an SMTP server (needed to send the verification emails). Add the following snippet to the `plugins-args` section of `etc/restheart.yml` (this has been tested with gmail but any SMTP server with SSL support should work):
 
 ```
 plugins-args:
@@ -46,6 +46,8 @@ plugins-args:
     smtp-username: <your-gmail-address>
     smtp-password: <your-gmail-password>
 ```
+
+> For gmail you might need to enable "less secure app access" to gmail as described [here](https://support.google.com/accounts/answer/6010255?hl=en)
 
 Set `mongoRealmAuthenticator` as the authenticator for the basic authentication mechanism:
 
@@ -73,9 +75,8 @@ $ http -a admin:secret PUT :8080/_schemas
 #### Create the JSON Schema for user
 
 ```
-$ echo '{"_id":"user","$schema":"http://json-schema.org/draft-04/schema#","type":"object","properties":{"_id":{"type":"string","pattern":"^\\\w+@[a-zA-Z_]+?.[a-zA-Z]{2,3}$"},"password":{"type":"string"},"roles":{"type":"array","items":{"type":"string"}}},"required": ["_id", "password"]}' | http -a admin:secret POST :8080/_schemas
+$ echo '{"_id":"user","$schema":"http://json-schema.org/draft-04/schema#","type":"object","properties":{"_id":{"type":"string","pattern":"^\\\w+@[a-zA-Z_]+?.[a-zA-Z]{2,3}$"},"password":{"type":"string"},"roles":{"type":"array","items":{"type":"string"}},"code":{"type":"string"}},"required":["_id","password"],"additionalProperties":false}' | http -a admin:secret POST :8080/_schemas
 ```
-
 
 #### Update the metadata of /users to apply the schema validation
 
@@ -99,15 +100,13 @@ $ echo '{"_id":{"$oid":"5f0f0e1785a5d15404f953bb"},"predicate":"path-prefix['/co
 
 ## Create user and verify the email address 
 
-The following unauthenticated request creates the user with your email address:
+The following unauthenticated request creates the user document with your email address:
 
 ```
 $ http :8080/users _id=<your-email-address> password=<your-password>
 ```
 
-The new user will automatically get the role `UNVERIFIED` and the verification email will be sent.
-
-And email will be sent with a verification link. Clicking on the link will unlock the user giving her the role 'USER'.
+The new user will automatically get the role `UNVERIFIED` and the verification email will be sent. Clicking on the link in the verification email unlocks the user giving her the role 'USER'.
 
 For a complete guide on how to check the user credentials read [Suggested way to check credentials](https://restheart.org/docs/security/how-clients-authenticate/#suggested-way-to-check-credentials).
 
