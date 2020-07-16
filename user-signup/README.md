@@ -47,7 +47,7 @@ plugins-args:
     smtp-password: <your-gmail-password>
 ```
 
-Set `mongoRealAuthenticator` as the authenticator for the basic authentication mechanism:
+Set `mongoRealmAuthenticator` as the authenticator for the basic authentication mechanism:
 
 ```
 auth-mechanisms:
