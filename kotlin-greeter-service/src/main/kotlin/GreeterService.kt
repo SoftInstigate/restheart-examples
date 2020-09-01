@@ -9,9 +9,12 @@ import org.restheart.plugins.RegisterPlugin
         defaultURI = "/greetings")
 class GreeterService : JsonService {
     override fun handle(request: JsonRequest?, response: JsonResponse?) {
-        var greetings = JsonObject()
-        greetings.addProperty("msg", "Hello World")
-
-        response?.content = greetings;
+        if (request?.isGet!!) {
+            var greetings = JsonObject()
+            greetings.addProperty("msg", "Hello World")
+            response?.content = greetings;
+        } else {
+            response?.statusCode = 400;
+        }
     }
 }
