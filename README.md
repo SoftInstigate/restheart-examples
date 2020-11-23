@@ -5,7 +5,7 @@
 
 RESTHeart is the REST API for MongoDB. With RESTHeart you can easily access MongoDB via a REST API, but it's also possible to create any kind of custom Web service.
 
-This repository provides examples on how to extend [RESTHeart v5](https://github.com/SoftInstigate/restheart) with Java plugins
+This repository provides examples on how to extend [RESTHeart v5](https://github.com/SoftInstigate/restheart) with Java or Kotlin plugins
 
 The parent POM defines common properties while each module implements a single example.
 
