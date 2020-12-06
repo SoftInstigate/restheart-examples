@@ -42,9 +42,10 @@ import org.restheart.utils.HttpStatus;
  * @author Andrea Di Cesare <andrea@softinstigate.com>
  */
 @RegisterPlugin(name = "verificationCodeGenerator",
-        description = "adds the verification code and sets the roles to UNVERIFIED whan an unauthenticated client creates a user user document",
+        description = "adds the verification code and sets the roles to UNVERIFIED when an unauthenticated client creates a user document",
         interceptPoint = InterceptPoint.REQUEST_AFTER_AUTH)
 public class VerificationCodeGenerator implements MongoInterceptor {
+
     private static final SecureRandom RND_GENERATOR = new SecureRandom();
 
     MongoClient mclient;
@@ -85,7 +86,7 @@ public class VerificationCodeGenerator implements MongoInterceptor {
     }
 
     /**
-     * checks if the a user with _id already exists
+     * Checks if the a user with _id already exists
      *
      * @param request
      * @return

@@ -27,13 +27,13 @@ You need both **JDK 11+** and **Maven** to build and run this example.
 1. Build the plugin with `mvn package` (uses the maven-dependency-plugin to copy the jar of the external dependency to /target/lib)
 1. Copy both the plugins JAR `target/user-signup.jar` and `target/lib/*` into the directory `../../restheart/plugins/`
 1. Start MongoDB on your localhost.
-1. cd into the restheart directory
+1. `cd` into the restheart directory
 1. Edit the `etc/restheart.yml`as described in the following section **Configuration**
 1. Start the process: `java -jar restheart.jar etc/restheart.yml -e etc/default.properties`.
 
 ### Configuration
 
-You need to configure the `emailVerificationSender` interceptor with the connection parameters of an SMTP server (needed to send the verification emails). Add the following snippet to the `plugins-args` section of `etc/restheart.yml` (this has been tested with gmail but any SMTP server with SSL support should work):
+You need to configure the `emailVerificationSender` interceptor with the connection parameters of an SMTP server (needed to send the verification emails). Add the following snippet to the `plugins-args` section of `etc/restheart.yml` (this has been tested with Gmail but any SMTP server with SSL support should work):
 
 ```
 plugins-args:
@@ -47,7 +47,7 @@ plugins-args:
     smtp-password: <your-gmail-password>
 ```
 
-> For gmail you might need to enable "less secure app access" to gmail as described [here](https://support.google.com/accounts/answer/6010255?hl=en)
+> For Gmail you might need to enable "less secure app access" to Gmail as described [here](https://support.google.com/accounts/answer/6010255?hl=en)
 
 Set `mongoRealmAuthenticator` as the authenticator for the basic authentication mechanism:
 
