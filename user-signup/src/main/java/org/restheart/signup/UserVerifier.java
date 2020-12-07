@@ -37,9 +37,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * verifeis a registered user
+ * Verifies a registered user
  *
- * it assumes that the user collection is 'restheart.users', the roles property
+ * It assumes that the user collection is 'restheart.users', the roles property
  * is 'roles' and the id of the user is "_id" (the default configuration values
  * of mongoRealAuthenticator)
  *
@@ -49,6 +49,7 @@ import org.slf4j.LoggerFactory;
         description = "verifies user",
         defaultURI = "/verify")
 public class UserVerifier implements JsonService {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(UserVerifier.class);
 
     private MongoClient mclient;
@@ -110,7 +111,7 @@ public class UserVerifier implements JsonService {
     }
 
     /**
-     * checks the code of registered user
+     * Checks the code of registered user
      *
      * @param username
      * @param code
@@ -127,7 +128,7 @@ public class UserVerifier implements JsonService {
     }
 
     /**
-     * sets roles = [ "USER" ]
+     * Sets roles = [ "USER" ]
      *
      * @param username
      */

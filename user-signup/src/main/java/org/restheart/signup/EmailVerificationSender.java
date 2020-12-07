@@ -40,6 +40,7 @@ import org.slf4j.LoggerFactory;
         description = "sends the email to verify email address of registered user",
         interceptPoint = InterceptPoint.RESPONSE_ASYNC)
 public class EmailVerificationSender implements MongoInterceptor {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(EmailVerificationSender.class);
 
     String from;
@@ -125,7 +126,7 @@ public class EmailVerificationSender implements MongoInterceptor {
         msg.setSubject(SUBJECT);
         msg.setContent(body, "text/html");
 
-        try (var transport = session.getTransport()) {
+        try ( var transport = session.getTransport()) {
             LOGGER.debug("Sending verification email to {}", to);
             transport.connect(host, smptUsername, smtpPassword);
             transport.sendMessage(msg, msg.getAllRecipients());
