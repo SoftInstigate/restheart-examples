@@ -64,6 +64,8 @@ If you have __docker__ running, then just executing the `run.sh` shell script wi
 
 When finished testing, send a `CTRL-C` command to: stop the script, kill RESTHeart and clean-up the MongoDB container.
 
+> On Debian/Ubuntu if your user is not added to __docker__ group or you haven’t this group you need to preface the `./run.sh` command with __sudo__ (Docker requires root privileges to manage Unix socket) 
+
 ### Without Docker
 
 1. Build the plugin with `mvn package`.

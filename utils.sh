@@ -5,7 +5,7 @@ function run {
     echo "###### Running with parameter '$1'"
     MONGO_VERSION=4.2
     IMAGE=mongo
-    MONGO_TMP_NETWORK="mongo-$(date | md5)"
+    MONGO_TMP_NETWORK="mongo-$(uuidgen)"
     MYDIR=${PWD}
     JARFILE="$1"
 
