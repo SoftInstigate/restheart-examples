@@ -23,9 +23,9 @@ public class HelloByteArrayService implements ByteArrayService {
 
         if (request.isGet()) {
             // If it's a GET look for a "name" query string parameter
-            LOGGER.debug("### QueryParameters: '{}'", request.getExchange().getQueryParameters());
-            if (request.getExchange().getQueryParameters().get("name") != null) {
-                responseMessage = "Hello, " + request.getExchange().getQueryParameters().get("name").getFirst();
+            LOGGER.debug("### QueryParameters: '{}'", request.getQueryParameters());
+            if (request.getQueryParameters().get("name") != null) {
+                responseMessage = "Hello, " + request.getQueryParameters().get("name").getFirst();
             }
             response.setStatusCode(HttpStatus.SC_OK);
         } else if (request.isPost()) {

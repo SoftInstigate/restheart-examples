@@ -12,8 +12,7 @@ import org.restheart.plugins.RegisterPlugin;
  *
  * @author Andrea Di Cesare <andrea@softinstigate.com>
  */
-@RegisterPlugin(name = "coordsToGeoJson", 
-        description = "transforms cordinates array to GeoJSON point object for csv loader service")
+@RegisterPlugin(name = "coordsToGeoJson", description = "transforms cordinates array to GeoJSON point object for csv loader service")
 public class CoordsToGeoJson implements Interceptor<BsonFromCsvRequest, BsonResponse> {
     @Override
     public void handle(BsonFromCsvRequest request, BsonResponse response) throws Exception {
@@ -23,9 +22,7 @@ public class CoordsToGeoJson implements Interceptor<BsonFromCsvRequest, BsonResp
             return;
         }
 
-        docs.stream()
-                .map(doc -> doc.asDocument())
-                .filter(doc -> doc.containsKey("lon") && doc.containsKey("lat"))
+        docs.stream().map(doc -> doc.asDocument()).filter(doc -> doc.containsKey("lon") && doc.containsKey("lat"))
                 .forEachOrdered(doc -> {
                     // get Coordinates
                     var coordinates = new BsonArray();

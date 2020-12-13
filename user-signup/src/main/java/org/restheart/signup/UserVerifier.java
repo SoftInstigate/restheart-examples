@@ -33,8 +33,6 @@ import org.restheart.plugins.InjectMongoClient;
 import org.restheart.plugins.JsonService;
 import org.restheart.plugins.RegisterPlugin;
 import org.restheart.utils.HttpStatus;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Verifies a registered user
@@ -49,9 +47,6 @@ import org.slf4j.LoggerFactory;
         description = "verifies user",
         defaultURI = "/verify")
 public class UserVerifier implements JsonService {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserVerifier.class);
-
     private MongoClient mclient;
     private final String userDb = "restheart";
     private final String usersCollection = "users";
@@ -69,7 +64,7 @@ public class UserVerifier implements JsonService {
         if (request.isOptions()) {
             handleOptions(request);
         } else if (request.isGet() && checkRequest(request)) {
-            var qparams = request.getExchange().getQueryParameters();
+            var qparams = request.getQueryParameters();
 
             if (!qparams.containsKey("username")
                     || qparams.get("username").isEmpty()
@@ -102,7 +97,7 @@ public class UserVerifier implements JsonService {
     }
 
     private boolean checkRequest(JsonRequest request) {
-        var qparams = request.getExchange().getQueryParameters();
+        var qparams = request.getQueryParameters();
 
         return qparams.containsKey("username")
                 && !qparams.get("username").isEmpty()

@@ -12,19 +12,14 @@ import org.restheart.utils.HttpStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@RegisterPlugin(
-        name = "serverstatus",
-        description = "returns MongoDB serverStatus",
-        enabledByDefault = true,
-        defaultURI = "/status")
+@RegisterPlugin(name = "serverstatus", description = "returns MongoDB serverStatus", enabledByDefault = true, defaultURI = "/status")
 public class MongoServerStatusService implements BsonService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MongoServerStatusService.class);
 
     private MongoClient mongoClient;
 
-    private static final BsonDocument DEFAULT_COMMAND
-            = new BsonDocument("serverStatus", new BsonInt32(1));
+    private static final BsonDocument DEFAULT_COMMAND = new BsonDocument("serverStatus", new BsonInt32(1));
 
     @InjectMongoClient
     public void init(MongoClient mongoClient) {
@@ -32,19 +27,16 @@ public class MongoServerStatusService implements BsonService {
     }
 
     @Override
-    public void handle(BsonRequest request, BsonResponse response) throws Exception {
+    public void handle(BsonRequest request, BsonResponse response) {
         if (request.isGet()) {
-            var commandQP = request.getExchange().getQueryParameters().get("command");
+            var commandQP = request.getQueryParameters().get("command");
 
-            final var command = commandQP != null
-                    ? BsonDocument.parse(commandQP.getFirst())
-                    : DEFAULT_COMMAND;
-            
+            final var command = commandQP != null ? BsonDocument.parse(commandQP.getFirst()) : DEFAULT_COMMAND;
+
             LOGGER.debug("### command=" + command);
-            
-            var serverStatus = mongoClient.getDatabase("admin")
-                    .runCommand(command, BsonDocument.class);
-            
+
+            var serverStatus = mongoClient.getDatabase("admin").runCommand(command, BsonDocument.class);
+
             response.setContent(serverStatus);
             response.setStatusCode(HttpStatus.SC_OK);
             response.setContentTypeAsJson();

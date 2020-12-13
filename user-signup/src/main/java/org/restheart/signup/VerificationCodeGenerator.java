@@ -41,9 +41,7 @@ import org.restheart.utils.HttpStatus;
  *
  * @author Andrea Di Cesare <andrea@softinstigate.com>
  */
-@RegisterPlugin(name = "verificationCodeGenerator",
-        description = "adds the verification code and sets the roles to UNVERIFIED when an unauthenticated client creates a user document",
-        interceptPoint = InterceptPoint.REQUEST_AFTER_AUTH)
+@RegisterPlugin(name = "verificationCodeGenerator", description = "adds the verification code and sets the roles to UNVERIFIED whan an unauthenticated client creates a user user document", interceptPoint = InterceptPoint.REQUEST_AFTER_AUTH)
 public class VerificationCodeGenerator implements MongoInterceptor {
 
     private static final SecureRandom RND_GENERATOR = new SecureRandom();
@@ -75,14 +73,10 @@ public class VerificationCodeGenerator implements MongoInterceptor {
     @Override
     public boolean resolve(MongoRequest request, MongoResponse response) {
         // applies to write request from unauthenticated clients
-        return this.mclient != null
-                && request.isWriteDocument()
-                && "users".equalsIgnoreCase(request.getCollectionName())
-                && request.getContent() != null
-                && request.getContent().isDocument()
-                && (request.getAuthenticatedAccount() == null
-                || request.getAuthenticatedAccount().getRoles()
-                        .contains("$unauthenticated"));
+        return this.mclient != null && request.isWriteDocument()
+                && "users".equalsIgnoreCase(request.getCollectionName()) && request.getContent() != null
+                && request.getContent().isDocument() && (request.getAuthenticatedAccount() == null
+                        || request.getAuthenticatedAccount().getRoles().contains("$unauthenticated"));
     }
 
     /**
@@ -96,8 +90,7 @@ public class VerificationCodeGenerator implements MongoInterceptor {
             var id = request.getContent().asDocument().get("_id");
 
             var existingUser = this.mclient.getDatabase(request.getDBName())
-                    .getCollection(request.getCollectionName(), BsonDocument.class)
-                    .find(eq("_id", id)).first();
+                    .getCollection(request.getCollectionName(), BsonDocument.class).find(eq("_id", id)).first();
 
             return existingUser != null;
         } else {
@@ -106,7 +99,6 @@ public class VerificationCodeGenerator implements MongoInterceptor {
     }
 
     private BsonString nextCode() {
-        return new BsonString(new BigInteger(256, RND_GENERATOR)
-                .toString(Character.MAX_RADIX));
+        return new BsonString(new BigInteger(256, RND_GENERATOR).toString(Character.MAX_RADIX));
     }
 }

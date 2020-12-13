@@ -8,9 +8,9 @@
   </parent>
   <artifactId>user-signup</artifactId>
   <packaging>jar</packaging>
-    
+
   <name>user-signup</name>
-    
+
   <dependencies>
     <dependency>
       <groupId>org.restheart</groupId>
@@ -28,7 +28,7 @@
       <version>1.1</version>
     </dependency>
   </dependencies>
-    
+
   <build>
     <plugins>
       <plugin>

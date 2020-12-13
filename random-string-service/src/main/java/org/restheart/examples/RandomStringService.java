@@ -18,7 +18,7 @@ public class RandomStringService implements ByteArrayService {
     public void handle(ByteArrayRequest request, ByteArrayResponse response) throws Exception {
         if (request.isGet()) {
             var rnd = RandomStringUtils.randomAlphabetic(10);
-            
+
             response.setContent(rnd.getBytes());
             response.setContentType("application/txt");
             response.setStatusCode(HttpStatus.SC_OK);
