@@ -13,14 +13,14 @@
     <artifactId>kotlin-greeter-service</artifactId>
 
     <properties>
-        <kotlin.version>1.4.0</kotlin.version>
+        <kotlin.version>1.5.0</kotlin.version>
         <main.class>GreeterServiceKt</main.class>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib-jdk8</artifactId>
+            <artifactId>kotlin-stdlib</artifactId>
             <version>${kotlin.version}</version>
         </dependency>
         <dependency>
@@ -68,9 +68,32 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <jvmTarget>1.8</jvmTarget>
+                    <jvmTarget>16</jvmTarget>
                 </configuration>
             </plugin>
+            <plugin>
+                <!-- maven-dependency-plugin is used to copy the external dependencies
+                (i.e. that are not provided by restheart.jar) to target/lib 
+                see https://restheart.org/docs/plugins/deploy/ -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.1.2</version>
+                <executions>
+                  <execution>
+                    <phase>package</phase>
+                    <goals>
+                      <goal>copy-dependencies</goal>
+                    </goals>
+                    <configuration>
+                      <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                      <!-- the following settings just include dependencies
+                      of runtime and compile scopes -->
+                      <excludeTransitive>true</excludeTransitive>
+                      <includeScope>runtime</includeScope>
+                    </configuration>
+                  </execution>
+                </executions>
+              </plugin>
         </plugins>
     </build>
 
