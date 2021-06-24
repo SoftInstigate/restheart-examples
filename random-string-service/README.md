@@ -15,7 +15,7 @@ Make sure not to copy jars to the directory plugins that are already included in
 
 ## How to build and run
 
-You need both **JDK 11+** and **Maven** to build and run this example.
+You need both **JDK 16++** and **Maven** to build and run this example.
 
 -   Clone this repo `git clone git@github.com:SoftInstigate/restheart-examples.git`
 -   `cd` into the `restheart-examples` folder

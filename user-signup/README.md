@@ -14,7 +14,7 @@ When the new document gets created:
 
 ### Download RESTHeart and clone the this repo
 
-You need both **JDK 11+** and **Maven** to build and run this example.
+You need both **JDK 16++** and **Maven** to build and run this example.
 
 -   [Download RESTHeart](https://github.com/SoftInstigate/restheart/releases/)
 -   uncompress it: `unzip restheart.zip` or `tar -xvf restheart.tar.gz`
