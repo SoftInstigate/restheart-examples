@@ -55,6 +55,7 @@
         <module>csv-interceptor</module>
         <module>user-signup</module>
         <module>kotlin-greeter-service</module>
+        <module>instance-name</module>
     </modules>
 
     <build>
