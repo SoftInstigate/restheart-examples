@@ -40,3 +40,4 @@ You need both **JDK 16++** and **Maven** to build and run this example.
  - [CSV Interceptor](csv-interceptor/README.md) - Converts coordinates from [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) to a [GeoJSON](https://geojson.org) object.
  - [User Signup](user-signup/README.md) - Implements a user signup process. This is an example of a complex process implemented with few interceptors, a service and uses json schema validation and security permissions.
  - [Kotlin Greeter Service](kotlin-greeter-service/README.md) - Simple service implemented in Kotlin programming language.
+ - [Credit Card Hider](credit-card-hider/README.md) - Simple JavaScript interceptor to hide credit card numbers.
