@@ -24,7 +24,6 @@ We use httpie
 $ http -a admin:secret PUT :8080/credicards
 $ http -a admin:secret POST :8080/credicards cc=1234-0000-5555-0001
 $ http -a admin:secret POST :8080/credicards cc=1234-0000-5555-0002
-$ http -a admin:secret POST :8080/credicards cc=1234-0000-5555-0003
 ```
 
 ## See it in action
@@ -39,7 +38,7 @@ $ http -b -a admin:secret :8080/creditcards
         "_id": {
             "$oid": "60dae4b8a16b227e471d96f2"
         },
-        "cc": "****-****-****-0001"
+        "cc": "****-****-****-0002"
     },
     {
         "_etag": {
@@ -48,7 +47,7 @@ $ http -b -a admin:secret :8080/creditcards
         "_id": {
             "$oid": "60dae4b6a16b227e471d96f0"
         },
-        "cc": "****-****-****-0000"
+        "cc": "****-****-****-0001"
     }
 ]
 ```
