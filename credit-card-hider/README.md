@@ -10,6 +10,22 @@ You need to run RESTHeart with the GraalVM to execute this interceptor.
 $ cp -r credit-card-hider ../restheart/plugins && touch ../restheart/plugins/credit-card-hider
 ```
 
+Note that `package.json` defines `cc-hider.js` as an interceptor
+
+```json
+"rh:interceptors": [
+    "cc-hider.js"
+  ]
+```
+
+For a service use the following declaration:
+
+```json
+"rh:services": [
+    "my-service.js"
+  ],
+```
+
 In the RESTHeart logs you'll see something like:
 
 ```
