@@ -4,6 +4,15 @@ A JavaScript Interceptor that hides credit card numbers
 
 You need to run RESTHeart with the GraalVM to execute this interceptor.
 
+Check the java version to be **GraalVM CE 21.1.0**
+
+```
+$ java  -version
+openjdk version "16.0.1" 2021-04-20
+OpenJDK Runtime Environment GraalVM CE 21.1.0 (build 16.0.1+9-jvmci-21.1-b05)
+OpenJDK 64-Bit Server VM GraalVM CE 21.1.0 (build 16.0.1+9-jvmci-21.1-b05, mixed mode, sharing)
+```
+
 ## Deploy
 
 ```
