@@ -1,5 +1,3 @@
-const BsonUtils = Java.type("org.restheart.utils.BsonUtils");
-
 export const options = {
     name: "ccHider",
     description: "hides credit card numbers",
@@ -8,9 +6,8 @@ export const options = {
 }
 
 export function handle(request, response) {
-    var bson = response.getContent();
-    // convert bson to json
-    var json = JSON.parse(BsonUtils.toJson(bson));
+    // convert bson content to json
+    const json = fromBson(response.getContent());
 
     var hidden;
 
@@ -22,17 +19,42 @@ export function handle(request, response) {
     }
 
     // set response converting json to bson
-    var bson = response.setContent(BsonUtils.parse(JSON.stringify(hidden)));
+    response.setContent(toBson(hidden));
 }
 
 export function resolve(request) {
     return request.isGet() && "creditcards" === request.getCollectionName();
 }
 
+/**
+ * @see https://javadoc.io/doc/org.restheart/restheart-commons/latest/org/restheart/utils/BsonUtils.html
+ */
+const BsonUtils = Java.type("org.restheart.utils.BsonUtils");
+
 function hideFromDoc(doc) {
-    if (doc['cc'] && doc['cc'].length > 14) {
-        doc['cc'] = doc['cc'].replace(/^.{14}/g, '****-****-****');
+    const ret = { ...doc };
+
+    if (ret['cc'] && ret['cc'].length > 14) {
+        ret['cc'] = ret['cc'].replace(/^.{14}/g, '****-****-****');
     }
 
-    return doc;
+    return ret;
+}
+
+/**
+ * Convert a Java BsonElement (BsonDocument or BsonArray) to JSON
+ * @param {*} bson
+ * @returns
+ */
+function fromBson(bson) {
+    return JSON.parse(BsonUtils.toJson(bson));
+}
+
+/**
+ * Convert a JSON object or array to a Java BsonElement
+ * @param {*} json
+ * @returns
+ */
+function toBson(json) {
+    return BsonUtils.parse(JSON.stringify(json));
 }
