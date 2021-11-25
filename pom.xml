@@ -42,7 +42,7 @@
             <dependency>
                 <groupId>org.restheart</groupId>
                 <artifactId>restheart-commons</artifactId>
-                <version>6.0.3</version>
+                <version>6.1.4</version>
                 <scope>provided</scope>
             </dependency>
         </dependencies>
@@ -56,6 +56,7 @@
         <module>user-signup</module>
         <module>kotlin-greeter-service</module>
         <module>instance-name</module>
+        <module>slack-notifier</module>
     </modules>
 
     <build>
