@@ -13,7 +13,7 @@
     <artifactId>kotlin-greeter-service</artifactId>
 
     <properties>
-        <kotlin.version>1.5.0</kotlin.version>
+        <kotlin.version>1.6.0</kotlin.version>
         <main.class>GreeterServiceKt</main.class>
     </properties>
 

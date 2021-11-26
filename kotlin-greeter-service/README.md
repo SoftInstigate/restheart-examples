@@ -18,7 +18,7 @@ You need both **JDK 16++** and **Maven** to build and run this example.
 1. `cd restheart-examples/kotlin-greeter-service`
 1. Build the plugin with `mvn package`
 1. Copy the service JAR `target/kotlin-greeter-service.jar` into `../restheart/plugins/` folder
-1. Copy the kotlin stdlib JAR `target/lib/kotlin-stdlib-1.5.0.jar` into `../restheart/plugins/` folder
+1. Copy the kotlin stdlib JAR `target/lib/kotlin-stdlib-1.6.0.jar` into `../restheart/plugins/` folder
 1. cd into the restheart distribution you have previously downloaded and uncompressed.
 1. Start the process: `java -jar restheart.jar etc/restheart.yml -e etc/default.properties`.
 
