@@ -42,7 +42,7 @@ public class SlackNotifierInterceptor implements MongoInterceptor {
         var doc = response.getDbOperationResult().getNewData();
 
         var body = new JSONObject();
-        body.put("text", ":tada: New document```" + doc.toJson(JsonWriterSettings.builder().indent(true).build()) + "```");
+        body.put("text", ":tada: New document\n```" + doc.toJson(JsonWriterSettings.builder().indent(true).build()) + "```");
         body.put("channel", this.channel);
 
         var resp = Unirest.post("https://slack.com/api/chat.postMessage")
