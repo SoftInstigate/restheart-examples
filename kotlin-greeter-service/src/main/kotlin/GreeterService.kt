@@ -4,17 +4,15 @@ import org.restheart.plugins.JsonService
 import com.google.gson.JsonObject
 import org.restheart.plugins.RegisterPlugin
 
-@RegisterPlugin(name = "kotlinGreeterService",
-        description = "A simple service written in Kotlin",
-        defaultURI = "/greetings")
+@RegisterPlugin(name = "kotlinGreeterService", description = "just another Hello World in Kotlin")
 class GreeterService : JsonService {
-    override fun handle(request: JsonRequest?, response: JsonResponse?) {
-        if (request?.isGet!!) {
+    override fun handle(request: JsonRequest, response: JsonResponse) {
+        if (request.isGet) {
             var greetings = JsonObject()
             greetings.addProperty("msg", "Hello World")
-            response?.content = greetings;
+            response.content = greetings;
         } else {
-            response?.statusCode = 400;
+            response.statusCode = 400;
         }
     }
 }
