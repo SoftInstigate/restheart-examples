@@ -9,7 +9,7 @@ This repository provides examples on how to extend [RESTHeart](https://github.co
 
 The parent POM defines common properties while each module implements a single example.
 
-The only required Maven dependency for building Java plugins is `restheart-commons`:
+The only required dependency for building Java plugins is `restheart-commons`:
 
 ```xml
 <dependency>
@@ -24,7 +24,7 @@ You can use this repository as a foundation for implementing your own plugins.
 
 ## Setup
 
-You need both **JDK 16++** and **Maven** to build and run this example.
+You need **JDK 17++** to build and run the examples.
 
 -   Clone this repo `git clone git@github.com:SoftInstigate/restheart-examples.git`.
 -   `cd` into the `restheart-examples` folder.

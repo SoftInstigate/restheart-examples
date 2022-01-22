@@ -46,7 +46,7 @@ Both returns `Hello, Andrea`.
 
 ## How to build and run
 
-You need both **JDK 16++** and **Maven** to build and run this example.
+You need **JDK 17++** to build and run this example.
 
 -   Clone this repo `git clone git@github.com:SoftInstigate/restheart-examples.git`
 -   `cd` into the `restheart-examples` folder
@@ -57,18 +57,18 @@ You need both **JDK 16++** and **Maven** to build and run this example.
 
 If you have __docker__ running, then just executing the `run.sh` shell script will:
 
-1. Build the JAR with Maven
+1. Build the JAR with `../mvnw package`
 1. Copy the JAR file into `../restheart/plugins/` folder
 1. Starts a volatile MongoDB docker container
 1. Starts RESTHeart Java process on port 8080
 
 When finished testing, send a `CTRL-C` command to: stop the script, kill RESTHeart and clean-up the MongoDB container.
 
-> On Debian/Ubuntu if your user is not added to __docker__ group or you haven’t this group you need to preface the `./run.sh` command with __sudo__ (Docker requires root privileges to manage Unix socket) 
+> On Debian/Ubuntu if your user is not added to __docker__ group or you haven’t this group you need to preface the `./run.sh` command with __sudo__ (Docker requires root privileges to manage Unix socket)
 
 ### Without Docker
 
-1. Build the plugin with `./mvnw package`.
+1. Build the plugin with `../mvnw package`.
 1. Copy the built JAR into the plugins folder `cp target/bytes-array-service.jar ../restheart/plugins/`.
 1. Start MongoDB in your localhost.
 1. cd into the restheart distribution you have previously downloaded and uncompressed.

@@ -20,7 +20,8 @@ package org.restheart.signup;
  * @author Andrea Di Cesare <andrea@softinstigate.com>
  */
 import com.google.gson.JsonObject;
-import com.mongodb.MongoClient;
+import com.mongodb.client.MongoClient;
+
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Updates.set;

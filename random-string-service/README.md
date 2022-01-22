@@ -10,12 +10,12 @@ This service just returns a random string on GET requests and uses an external d
 
 Make sure not to copy jars to the directory plugins that are already included in restheart.jar. To list of all dependencies included in restheart.jar, you can use Maven: 
 - clone restheart
-- `cd restheart/core` 
+- `cd restheart/core`
 - `./mvnw dependency:tree`
 
 ## How to build and run
 
-You need both **JDK 16++** and **Maven** to build and run this example.
+You need **JDK 17++** to build and run this example.
 
 -   Clone this repo `git clone git@github.com:SoftInstigate/restheart-examples.git`
 -   `cd` into the `restheart-examples` folder
@@ -25,7 +25,7 @@ You need both **JDK 16++** and **Maven** to build and run this example.
 ### Run
 
 1. `cd random-string-service`
-1. Build the plugin with `./mvnw package` (uses the maven-dependency-pluging to copy the jar of the external dependency to /target/lib)
+1. Build the plugin with `../mvnw package` (uses the maven-dependency-plugin to copy the jar of the external dependency to /target/lib)
 1. Copy both the service JAR `target/random-string-service.jar `and `target/lib/commons-lang3-3.10.jar` into `../restheart/plugins/` folder
 1. Start MongoDB in your localhost.
 1. cd into the restheart distribution you have previously downloaded and uncompressed.

@@ -1,6 +1,7 @@
 package org.restheart.examples;
 
-import com.mongodb.MongoClient;
+import com.mongodb.client.MongoClient;
+
 import org.bson.BsonDocument;
 import org.bson.BsonInt32;
 import org.restheart.exchange.BsonRequest;

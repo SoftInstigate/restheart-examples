@@ -21,7 +21,7 @@ See https://docs.mongodb.com/manual/reference/command/serverStatus/
 
 ## How to build and run
 
-You need both **JDK 16++** and **Maven** to build and run this example.
+You need **JDK 17++** to build and run this example.
 
 -   Clone this repo `git clone git@github.com:SoftInstigate/restheart-examples.git`
 -   `cd` into the `restheart-examples` folder
@@ -41,7 +41,7 @@ When finished testing, send a `CTRL-C` command to: stop the script, kill RESTHea
 
 ### Without Docker
 
-1. Build the plugin with `./mvnw package`.
+1. Build the plugin with `../mvnw package`.
 1. Copy the built JAR into the plugins folder `cp target/mongo-status-service.jar ../restheart/plugins/`.
 1. Start MongoDB in your localhost.
 1. cd into the restheart distribution you have previously downloaded and uncompressed.

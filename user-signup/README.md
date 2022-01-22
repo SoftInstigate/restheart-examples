@@ -14,7 +14,7 @@ When the new document gets created:
 
 ### Download RESTHeart and clone the this repo
 
-You need both **JDK 16++** and **Maven** to build and run this example.
+You need **JDK 17++** to build and run this example.
 
 -   [Download RESTHeart](https://github.com/SoftInstigate/restheart/releases/)
 -   uncompress it: `unzip restheart.zip` or `tar -xvf restheart.tar.gz`
@@ -24,7 +24,7 @@ You need both **JDK 16++** and **Maven** to build and run this example.
 ### Build and run it
 
 1. `cd user-signup`
-1. Build the plugin with `./mvnw package` (uses the maven-dependency-plugin to copy the jar of the external dependency to /target/lib)
+1. Build the plugin with `../mvnw package` (uses the maven-dependency-plugin to copy the jar of the external dependency to /target/lib)
 1. Copy both the plugins JAR `target/user-signup.jar` and `target/lib/*` into the directory `../../restheart/plugins/`
 1. Start MongoDB on your localhost.
 1. `cd` into the restheart directory

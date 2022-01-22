@@ -15,10 +15,12 @@
  */
 package org.restheart.signup;
 
-import com.mongodb.MongoClient;
 import static com.mongodb.client.model.Filters.eq;
 import java.math.BigInteger;
 import java.security.SecureRandom;
+
+import com.mongodb.client.MongoClient;
+
 import org.bson.BsonArray;
 import org.bson.BsonDocument;
 import org.bson.BsonString;

@@ -4,13 +4,13 @@ import java.util.Map;
 import com.mashape.unirest.http.Unirest;
 
 import org.bson.json.JsonWriterSettings;
-import org.json.JSONObject;
 import org.restheart.exchange.MongoRequest;
 import org.restheart.exchange.MongoResponse;
 import org.restheart.plugins.InjectConfiguration;
 import org.restheart.plugins.InterceptPoint;
 import org.restheart.plugins.MongoInterceptor;
 import org.restheart.plugins.RegisterPlugin;
+import static org.restheart.utils.GsonUtils.object;
 import static org.restheart.plugins.ConfigurablePlugin.argValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,9 +41,9 @@ public class SlackNotifierInterceptor implements MongoInterceptor {
     public void handle(MongoRequest request, MongoResponse response) throws Exception {
         var doc = response.getDbOperationResult().getNewData();
 
-        var body = new JSONObject();
-        body.put("text", ":tada: New document\n```" + doc.toJson(JsonWriterSettings.builder().indent(true).build()) + "```");
-        body.put("channel", this.channel);
+        var body = object()
+            .put("text", ":tada: New document\n```" + doc.toJson(JsonWriterSettings.builder().indent(true).build()) + "```")
+            .put("channel", this.channel);
 
         var resp = Unirest.post("https://slack.com/api/chat.postMessage")
             .header("Authorization", "Bearer " + this.oauthToken)

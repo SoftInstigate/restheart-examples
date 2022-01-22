@@ -6,7 +6,7 @@ This service just returns a JSON response with a greetings message
 
 ## How to build and run
 
-You need both **JDK 16++** and **Maven** to build and run this example.
+You need **JDK 17++** to build and run this example.
 
 -   Clone this repo `git clone git@github.com:SoftInstigate/restheart-examples.git`
 -   `cd` into the `restheart-examples` folder
@@ -16,7 +16,7 @@ You need both **JDK 16++** and **Maven** to build and run this example.
 ### Run
 
 1. `cd restheart-examples/kotlin-greeter-service`
-1. Build the plugin with `./mvnw package`
+1. Build the plugin with `../mvnw package`
 1. Copy the service JAR `target/kotlin-greeter-service.jar` into `../restheart/plugins/` folder
 1. Copy the kotlin stdlib JAR `target/lib/kotlin-stdlib-1.6.0.jar` into `../restheart/plugins/` folder
 1. cd into the restheart distribution you have previously downloaded and uncompressed.
