@@ -30,7 +30,7 @@ You need both **JDK 16++** and **Maven** to build and run this example.
 ### Run
 
 1. `cd slack-notifier`
-1. Build the plugin with `mvn package` (uses the maven-dependency-plugin to copy the jar of the external dependency to /target/lib)
+1. Build the plugin with `./mvnw package` (uses the maven-dependency-plugin to copy the jar of the external dependency to /target/lib)
 1. Copy both the service JAR `target/slack-notifier.jar `and `target/lib/*` into `../restheart/plugins/` folder
 1. Start MongoDB in your localhost.
 1. cd into the restheart distribution you have previously downloaded and uncompressed.

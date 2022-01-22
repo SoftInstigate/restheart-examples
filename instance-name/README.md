@@ -35,7 +35,7 @@ When finished testing, send a `CTRL-C` command to: stop the script, kill RESTHea
 
 ### Without Docker
 
-1. Build the plugin with `mvn package`.
+1. Build the plugin with `./mvnw package`.
 1. Copy the built JAR into the plugins folder `cp target/instance-name.jar ../restheart/plugins/`.
 1. Start MongoDB in your localhost.
 1. cd into the restheart distribution you have previously downloaded and uncompressed.
