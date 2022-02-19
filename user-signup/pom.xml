@@ -33,7 +33,7 @@
     <plugins>
       <plugin>
         <!-- maven-dependency-plugin is used to copy the external dependencies
-        (i.e. that are not provided by restheart.jar) to target/lib 
+        (i.e. that are not provided by restheart.jar) to target/lib
         see https://restheart.org/docs/plugins/deploy/ -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
