@@ -27,13 +27,12 @@ public class CsvRepresentationTransformer implements MongoInterceptor {
         // add rows
         docs.stream()
             .map(BsonValue::asDocument)
-            .forEach(fdoc -> {
-                sb.append(fdoc.entrySet().stream()
+            .forEach(fdoc -> sb.append(
+                fdoc.entrySet().stream()
                     .map(e -> e.getValue())
                     .map(v -> BsonUtils.toJson(v))
                     .collect(Collectors.joining(",")))
-                .append("\n");
-            });
+                .append("\n"));
 
         response.setContentType("text/csv");
 
