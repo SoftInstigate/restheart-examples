@@ -37,7 +37,7 @@ public class CsvRepresentationTransformer implements MongoInterceptor {
 
         response.setContentType("text/csv");
 
-        // this method has a type, should be setCustomSender
+        // setCustomerSender() method name has a typo, should be setCustomSender()
         // will be fixed in v6.2.2
         response.setCustomerSender(() -> response.getExchange().getResponseSender().send(sb.toString()));
     }
