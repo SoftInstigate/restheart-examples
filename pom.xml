@@ -42,7 +42,7 @@
             <dependency>
                 <groupId>org.restheart</groupId>
                 <artifactId>restheart-commons</artifactId>
-                <version>6.2.1</version>
+                <version>6.2.2</version>
                 <scope>provided</scope>
             </dependency>
         </dependencies>
@@ -57,6 +57,7 @@
         <module>kotlin-greeter-service</module>
         <module>instance-name</module>
         <module>slack-notifier</module>
+        <module>form-handler</module>
     </modules>
 
     <build>
