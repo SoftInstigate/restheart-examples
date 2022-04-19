@@ -42,7 +42,7 @@
             <dependency>
                 <groupId>org.restheart</groupId>
                 <artifactId>restheart-commons</artifactId>
-                <version>6.2.2</version>
+                <version>6.2.4</version>
                 <scope>provided</scope>
             </dependency>
         </dependencies>
@@ -58,6 +58,7 @@
         <module>instance-name</module>
         <module>slack-notifier</module>
         <module>form-handler</module>
+        <module>protobuffer-service</module>
     </modules>
 
     <build>
