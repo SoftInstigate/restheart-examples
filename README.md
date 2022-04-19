@@ -41,4 +41,4 @@ You need **JDK 17++** to build and run the examples.
  - [User Signup](user-signup/README.md) - Implements a user signup process. This is an example of a complex process implemented with few interceptors, a service and uses json schema validation and security permissions.
  - [Kotlin Greeter Service](kotlin-greeter-service/README.md) - Simple service implemented in Kotlin programming language.
  - [Credit Card Hider](credit-card-hider/README.md) - Simple JavaScript interceptor to hide credit card numbers.
- - [Protobuffer Service](protobuffer-service/README.md) - Service interceptor to hide credit card numbers.
+ - [Protobuffer Service](protobuffer-service/README.md) - A simple Service that uses Protocol Buffer as payloads
