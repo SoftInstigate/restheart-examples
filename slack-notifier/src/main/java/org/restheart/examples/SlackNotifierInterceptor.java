@@ -35,7 +35,7 @@ public class SlackNotifierInterceptor implements MongoInterceptor {
         this.db = argValue(config, "db");
         this.collection = argValue(config, "collection");
 
-        LOGGER.debug("SlackNotifierInterceptor initialized with channel: {}, oauthToken: {}, db: {}, collection: {}", channel, oauthToken, db, collection);
+        LOGGER.info("SlackNotifierInterceptor initialized with channel: {}, oauthToken: {}, db: {}, collection: {}", channel, oauthToken, db, collection);
     }
     @Override
     public void handle(MongoRequest request, MongoResponse response) throws Exception {
@@ -51,7 +51,7 @@ public class SlackNotifierInterceptor implements MongoInterceptor {
             .body(body)
             .asJson();
 
-        LOGGER.debug("SlackNotifierInterceptor sent message to slack channel: {} with status {}", resp.getBody(), resp.getStatus());
+        LOGGER.info("SlackNotifierInterceptor sent message to slack channel: {} with status {}", resp.getBody(), resp.getStatus());
     }
 
     @Override
